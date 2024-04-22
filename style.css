@@ -1,0 +1,112 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #ff0000, #0000ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  color: #ff0000; /* Warna teks */
+}
+
+.calculator {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.9); /* Penambahan shadow */
+  padding: 20px;
+  width: 300px;
+  color: #00ff00; /* Warna teks */
+}
+
+
+.display {
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 2em;
+  margin-bottom: 10px;
+  padding: 10px;
+  text-align: right;
+  color: #0000ff; /* Warna teks */
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+button {
+  background-color: #ff0000;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1.5em;
+  padding: 10px;
+  transition: background-color 0.3s;
+  color: #fff; /* Warna teks */
+}
+
+button:hover {
+  background-color: #0000ff;
+}
+
+.container {
+    text-align: center;
+    background-color: #0000ff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 24px;
+    color: #008000; /* Warna teks */
+}
+
+.creator {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 12px;
+    color: #888;
+  }
+
+  .register-button, .login-button {
+    background-color: #0000ff; /* Warna latar belakang biru */
+    color: #fff; /* Warna teks putih */
+    border: none;
+    padding: 8px 12px; /* Mengurangi padding untuk membuat tombol lebih kecil */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Efek transisi saat disorot */
+    font-size: 14px; /* Mengurangi ukuran teks */
+    width: auto; /* Atur lebar otomatis */
+    height: auto; /* Atur tinggi otomatis */
+}
+
+
+
+.register-button:hover, .login-button:hover {
+    background-color: rgba(255, 255, 255, 0.7); /* Warna latar belakang saat disorot */
+}
