@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar/Masuk</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+        }
+        .login-container h2 {
+            text-align: center;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+        }
+        .login-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="text" id="loginUsername" placeholder="Username" required>
+            <input type="password" id="loginPassword" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <div class="login-container" style="margin-top: 20px;">
+        <h2>Register</h2>
+        <form id="registerForm">
+            <input type="text" id="registerUsername" placeholder="Username" required>
+            <input type="password" id="registerPassword" placeholder="Password" required>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        // Ambil form login
+        const loginForm = document.getElementById('loginForm');
+
+        // Event listener untuk submit form login
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Mencegah form dari aksi default (submit)
+
+            // Ambil nilai dari input username dan password untuk login
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+
+            // Cek apakah user telah terdaftar dengan username dan password yang benar
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = users.find(u => u.username === username && u.password === password);
+            if (user) {
+                // Jika user ditemukan, simpan informasi login ke localStorage
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('username', username);
+
+                // Redirect ke halaman dashboard atau halaman setelah login
+                window.location.href = './dasboard.html';
+            } else {
+                alert('Username atau password salah!');
+            }
+        });
+
+        // Ambil form register
+        const registerForm = document.getElementById('registerForm');
+
+        // Event listener untuk submit form register
+        registerForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Mencegah form dari aksi default (submit)
+
+            // Ambil nilai dari input username dan password untuk register
+            const username = document.getElementById('registerUsername').value;
+            const password = document.getElementById('registerPassword').value;
+
+            // Cek apakah username telah digunakan sebelumnya
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const userExists = users.some(u => u.username === username);
+            if (userExists) {
+                alert('Username sudah digunakan!');
+            } else {
+                // Jika username tersedia, tambahkan user baru ke localStorage
+                users.push({ username, password });
+                localStorage.setItem('users', JSON.stringify(users));
+                alert('Registrasi berhasil! Silakan login.');
+            }
+        });
+    </script>
+</body>
+</html>
